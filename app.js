@@ -30,11 +30,23 @@ app.use('/user', userRoutes);
 const MONGO_URL ='mongodb://reiterclub:' + encodeURIComponent(process.env.MONGO_PSW) + 
 '@reiter-shard-00-00-srtct.mongodb.net:27017,reiter-shard-00-01-srtct.mongodb.net:27017,reiter-shard-00-02-srtct.mongodb.net:27017/test?ssl=true&replicaSet=reiter-shard-0&authSource=admin&retryWrites=true'
 
-mongoose.connect(MONGO_URL, {
-        auth: {
-            user: process.env.MONGO_DB_USER,
-            password: encodeURIComponent(process.env.MONGO_PSW),
-        },
+// MongoDB Atles Connection
+    // mongoose.connect(MONGO_URL, {
+    //     auth: {
+    //         user: process.env.MONGO_DB_USER,
+    //         password: encodeURIComponent(process.env.MONGO_PSW),
+    //     },
+    //     useNewUrlParser:true
+    // }, function(err, client) {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    //     console.log('connect!!!');
+    // });
+
+
+// local connection
+mongoose.connect('mongodb://localhost/reiter', {
         useNewUrlParser:true
     }, function(err, client) {
         if (err) {

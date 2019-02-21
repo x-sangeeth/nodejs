@@ -1,7 +1,6 @@
 // var mongoose = require('mongoose');
 // // Setup schema
 // var otpsSchema = mongoose.Schema({
-//    // _id: new mongoose.Types.ObjectId(),
 //     mobilenumber: {
 //         type: String,
 //         required: true

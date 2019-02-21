@@ -22,7 +22,7 @@ router.post('/register', (req, res, next) => {
     sendOtp.send(phone, "REITER", function (error, data) {
         console.log(data);
     });
-    sendOtp.setOtpExpiry('100'); //in minutes
+    sendOtp.setOtpExpiry('1440'); //in minutes
     
     const response ={
         message: "OTP sent succesfully",
@@ -57,7 +57,7 @@ router.post('/verifyotp', (req, res, next) => {
             localStorage.setItem('userauth', JSON.stringify(users));
 
             const token = jwt.sign (
-                { mobilenumber: authdetails.mobilenumber}, process.env.JWT_KEY, { expiresIn: "1h" }            
+                { mobilenumber: authdetails.mobilenumber}, process.env.JWT_KEY, { expiresIn: "365d" }            
             );
 
             res.status(200).json({
