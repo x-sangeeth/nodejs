@@ -2,25 +2,24 @@ var mongoose = require('mongoose');
 
 // Setup schema
 var clubSchema = mongoose.Schema({
-    clubname: {
-      type: String,
+    _id : ObjectID(),
+    ClubId: [],
+    RiderId: [],
+    IsApproved: {
+      type: Boolean,
       required: true
     },
-    licenceno: {
-        type: String,
+    IsBlocked: {
+        type: Boolean,
         required: true
     },
-    location: {
-      type: String,
-      required: true
-    },
-    create_date: {
+     CreatedDate: {
         type: Date,
         default: Date.now
-    }
+    }    
 });
 // Export clubSchema
-var Contact = module.exports = mongoose.model('club', clubSchema);
+var Contact = module.exports = mongoose.model('ClubMember', clubSchema);
 module.exports.get = function (callback, limit) {
     Contact.find(callback).limit(limit);
 }

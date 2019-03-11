@@ -1,34 +1,37 @@
 var mongoose = require('mongoose');
 
 // Setup schema
-var userSchema = mongoose.Schema({
+var clubSchema = mongoose.Schema({
     _id : ObjectID(),
-    MobileNumber: {
+    UserId: [],
+    ClubName: {
         type: String,
         required: true
     },
-    CountryCode: {
+    RegNumber: {
       type: String,
       required: true
     },
-    LoginType: {
+    Make: {
       type: String,
       required: true
     },
-    IsActive: {
-        type: Boolean
+    LocationLat: {
+        type: String
     },
-    IsVerified: {
-        type: Boolean
+    LocationLong: {
+        type: String
     },
+    IsVarified: {
+        type: Boolean
+    },    
     CreatedDate: {
         type: Date,
         default: Date.now
-    }
+    }    
 });
-
-// Export User
-var Contact = module.exports = mongoose.model('User', userSchema);
+// Export clubSchema
+var Contact = module.exports = mongoose.model('ClubDetails', clubSchema);
 module.exports.get = function (callback, limit) {
     Contact.find(callback).limit(limit);
 }
